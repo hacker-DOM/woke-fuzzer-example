@@ -50,6 +50,7 @@ def test_counter():
         dev_interface.console_logs_callback = lambda tx_hash, logs: print(f"{tx_hash}: {logs}")
         woke.testing.campaign.logger.setLevel(logging.INFO)
         log.setLevel(logging.INFO)
+        log.addHandler(logging.StreamHandler(sys.stdout))
         campaign = Campaign(Test)
         campaign.run(20, 200)
     except AssertionError:
